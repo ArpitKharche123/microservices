@@ -1,6 +1,6 @@
 package edu.j2ee.order_service;
 
-import org.apache.hc.core5.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +17,6 @@ public class OrderController {
 
 	@PostMapping
 	public ResponseEntity<Order> createOrder(@RequestParam Long productId, @RequestParam int quantity) {
-		return ResponseEntity.status(HttpStatus.SC_CREATED).body(orderService.placeOrder(productId, quantity));
+		return ResponseEntity.status(HttpStatus.CREATED).body(orderService.placeOrder(productId, quantity));
 	}
 }

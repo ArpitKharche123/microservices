@@ -1,5 +1,7 @@
 package edu.j2ee.product_service.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import edu.j2ee.product_service.dto.ProductDto;
@@ -16,6 +18,10 @@ public class ProductService {
 
 	public Product getProductById(Long id) {
 		return repository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+	}
+	
+	public List<Product> getAllProducts() {
+		return repository.findAll();
 	}
 
 	public Product saveProduct(ProductDto product) {

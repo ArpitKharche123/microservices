@@ -1,6 +1,8 @@
 package edu.j2ee.product_service.controller;
 
-import org.apache.hc.core5.http.HttpStatus;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +26,14 @@ public class ProductController {
 	public ResponseEntity<Product> getProductById(@PathVariable Long id) {
 		return ResponseEntity.ok(productService.getProductById(id));
 	}
-
+	
+	@GetMapping
+	public ResponseEntity<List<Product>> getAllProducts() {
+		return ResponseEntity.ok(productService.getAllProducts());
+	}
+	
 	@PostMapping
 	public ResponseEntity<Product> createProduct(@RequestBody ProductDto product) {
-		return ResponseEntity.status(HttpStatus.SC_CREATED).body(productService.saveProduct(product));
+		return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(product));
 	}
 }
