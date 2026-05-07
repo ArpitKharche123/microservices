@@ -1,5 +1,7 @@
 package edu.j2ee.order_service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import edu.j2ee.order_service.inter_service_communication.ProductClient;
@@ -27,5 +29,9 @@ public class OrderService {
 		order.setTotalPrice(product.getPrice() * quantity);
 
 		return orderRepository.save(order);
+	}
+	
+	public List<Order> getAllOrders() {
+		return orderRepository.findAll();
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "PRODUCT-SERVICE")
 public interface ProductClient {
+	
 	@GetMapping("products/{id}")
 	ProductResponseDto getProductById(@PathVariable Long id);
 	// We use service name, not hardcoded URL
